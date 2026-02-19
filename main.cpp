@@ -1,5 +1,6 @@
 #include <raylib.h>
 #include "player.h"
+#include <math.h>
 
 enum SPR {
 	SPR_DANTEDOWN1,
@@ -35,10 +36,10 @@ int main() {
 	};
 	while(!WindowShouldClose()) {
 		p.update(walls, 4);
+		camera.target = {floor(playerPos.x + 20), floor(playerPos.y + 16)};
 		playerPos = p.getPos();
 		playerDir = p.getDir();
 		playerWFrame = p.getWFrame();
-		camera.target = {playerPos.x + 20, playerPos.y + 16};
 		BeginDrawing();
 			BeginMode2D(camera);
 				ClearBackground(BLACK);
