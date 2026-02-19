@@ -1,5 +1,5 @@
 #include <raylib.h>
-#include <iostream>
+#include "player.h"
 
 enum SPR {
 	SPR_DANTEDOWN1,
@@ -8,40 +8,7 @@ enum SPR {
 	SPRCOUNT
 };
 
-class player {
-	Vector2 pos = {170,120};
-	Vector2 dir = {0, 0};
-	Rectangle collider = { 170,120,21,29 };
-	Rectangle checkCollider = { 170,120,20,24 };
-	float speed = 2.5;
-	int touchingWall = 0;
-	int walkFrame = 0;
-	public: void update(Rectangle* walls, int wallcount) {
-		if(dir.x || dir.y) {
-			if(walkFrame < 21) walkFrame++;
-			else walkFrame = 0;
-		} else walkFrame = 0;
-		touchingWall = 0;
-		if(IsKeyDown(KEY_LEFT)) { dir.x = -1; } 
-		else if(IsKeyDown(KEY_RIGHT)) { dir.x = 1; }
-		else { dir.x = 0; }
-		if(IsKeyDown(KEY_UP)) { dir.y = -1; }
-		else if(IsKeyDown(KEY_DOWN)) { dir.y = 1; }
-		else { dir.y = 0; }
-		collider = { pos.x, pos.y, collider.width,collider.height };
-		checkCollider = { pos.x + dir.x * speed, pos.y + dir.y * speed, collider.width,collider.height };
-		for(int i = 0; i < wallcount; i++) {
-			if(CheckCollisionRecs(checkCollider,walls[i])) touchingWall = 1;
-		}
-		if(!touchingWall) {
-			pos.y += dir.y * speed;
-			pos.x += dir.x * speed;
-		}
-	}
-	public: Vector2 getPos() { return pos; }
-	public: Vector2 getDir() { return dir; }
-	public: int getWFrame() { return walkFrame; }
-};
+class player;
 
 int main() {
 	InitWindow(340,240, "gay");
