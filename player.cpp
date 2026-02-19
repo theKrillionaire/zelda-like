@@ -13,6 +13,8 @@ void player::update(Rectangle* walls, int wallcount) {
 	if(IsKeyDown(KEY_UP)) { dir.y = -1; }
 	else if(IsKeyDown(KEY_DOWN)) { dir.y = 1; }
 	else { dir.y = 0; }
+	if(IsKeyDown(KEY_Z)) speed = 5;
+	else speed = 2.5;
 	collider = { pos.x, pos.y, collider.width,collider.height };
 	checkCollider = { pos.x + dir.x * speed, pos.y + dir.y * speed, collider.width,collider.height };
 	for(int i = 0; i < wallcount; i++) {
