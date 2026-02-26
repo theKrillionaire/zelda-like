@@ -14,11 +14,10 @@ void player::update(Rectangle* walls, int wallcount) {
 	if(IsKeyDown(KEY_UP)) { dir.y = -1; }
 	else if(IsKeyDown(KEY_DOWN)) { dir.y = 1; }
 	else { dir.y = 0; }
-	if(IsKeyDown(KEY_Z)) speed = 5;
-	else speed = 2.5;
-	collider = { pos.x, pos.y, collider.width,collider.height };
-	checkColliderX = { pos.x + dir.x * speed, pos.y, collider.width,collider.height };
-	checkColliderY = { pos.x, pos.y + dir.y * speed, collider.width,collider.height };
+	if(IsKeyDown(KEY_Z)) speed = RUNSPEED;
+	else speed = WALKSPEED;
+	Rectangle checkColliderX = { pos.x + dir.x * speed,pos.y,playerSize.x,playerSize.y };
+	Rectangle checkColliderY = { pos.x,pos.y + dir.y * speed,playerSize.x,playerSize.y };
 	for(int i = 0; i < wallcount; i++) {
 		if(CheckCollisionRecs(checkColliderX,walls[i])) touchingWallX = 1;
 		if(CheckCollisionRecs(checkColliderY,walls[i])) touchingWallY = 1;
