@@ -3,9 +3,6 @@
 #include <math.h>
 
 enum SPR {
-	SPR_DANTEDOWN1,
-	SPR_DANTEDOWN2,
-	SPR_DANTEDOWN3,
 	MAP_TEST,
 	SPRCOUNT
 };
@@ -29,26 +26,18 @@ int main() {
 		{0,610,640,32},
 	};
 	Texture2D images[SPRCOUNT] = {
-		LoadTexture("sprites/D3Down1.png"),
-		LoadTexture("sprites/D3Down2.png"),
-		LoadTexture("sprites/D3Down3.png"),
 		LoadTexture("mapimg/test.png")
 	};
 	while(!WindowShouldClose()) {
 		p.update(walls, 4);
 		camera.target = {floor(playerPos.x + 20), floor(playerPos.y + 16)};
 		playerPos = p.getPos();
-		playerDir = p.getDir();
-		playerWFrame = p.getWFrame();
+		//playerDir = p.getDir();
 		BeginDrawing();
 			BeginMode2D(camera);
 				ClearBackground(BLACK);
 				DrawTexture(images[MAP_TEST],0,0,WHITE);
-				if(playerWFrame == 0) DrawTexture(images[SPR_DANTEDOWN1],playerPos.x - 4,playerPos.y - 2,WHITE);
-				else if(playerWFrame < 6) DrawTexture(images[SPR_DANTEDOWN2],playerPos.x - 4,playerPos.y - 2,WHITE);
-				else if(playerWFrame < 11) DrawTexture(images[SPR_DANTEDOWN1],playerPos.x - 4,playerPos.y - 2,WHITE);
-				else if(playerWFrame < 16) DrawTexture(images[SPR_DANTEDOWN3],playerPos.x - 4,playerPos.y - 2,WHITE);
-				else if(playerWFrame <= 21) DrawTexture(images[SPR_DANTEDOWN1],playerPos.x - 4,playerPos.y - 2,WHITE);
+				DrawTexture(p.getFrame(), playerPos.x, playerPos.y, WHITE);
 			EndMode2D();
 		EndDrawing();
 	}

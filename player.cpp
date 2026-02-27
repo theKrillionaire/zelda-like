@@ -1,11 +1,11 @@
 #include <raylib.h>
 #include "player.h"
+#include <stdio.h>
 
 void player::update(Rectangle* walls, int wallcount) {
-	if(dir.x || dir.y) {
-		if(walkFrame < 21) walkFrame++;
-		else walkFrame = 0;
-	} else walkFrame = 0;
+	bool touchingWallX = 0;
+	bool touchingWallY = 0;
+	Vector2 dir = {0, 0};
 	touchingWallX = 0;
 	touchingWallY = 0;
 	if(IsKeyDown(KEY_LEFT)) { dir.x = -1; } 
@@ -16,6 +16,12 @@ void player::update(Rectangle* walls, int wallcount) {
 	else { dir.y = 0; }
 	if(IsKeyDown(KEY_Z)) speed = RUNSPEED;
 	else speed = WALKSPEED;
+	
+	if(dir.x || dir.y) {
+		if(walkFrame < 20) { walkFrame++; } 
+		else { walkFrame = 0; }
+	} else { walkFrame = 0; } 
+	
 	Rectangle checkColliderX = { pos.x + dir.x * speed,pos.y,playerSize.x,playerSize.y };
 	Rectangle checkColliderY = { pos.x,pos.y + dir.y * speed,playerSize.x,playerSize.y };
 	for(int i = 0; i < wallcount; i++) {
@@ -29,6 +35,13 @@ void player::update(Rectangle* walls, int wallcount) {
 		pos.y += dir.y * speed;
 	}
 }
+Texture2D player::getFrame() {
+	if(walkFrame == 0) return images[SPR_DOWN1];
+	else if(walkFrame < 6) return images[SPR_DOWN2];
+	else if(walkFrame < 11) return images[SPR_DOWN1];
+	else if(walkFrame < 16) return images[SPR_DOWN3];
+	else if(walkFrame < 21) return images[SPR_DOWN1];
+}
+
 Vector2 player::getPos() { return pos; }
-Vector2 player::getDir() { return dir; }
 int player::getWFrame() { return walkFrame; }
