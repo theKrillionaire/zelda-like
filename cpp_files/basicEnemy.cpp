@@ -9,5 +9,7 @@ Vector2 enemy::getPos() const {
 
 
 void enemy::update(const player* p, const pathfinding* pathfind) {
-		pathfind->findPath(p, this);
-	}
+		Vector2 dir = pathfind->findPath(p, this);
+		pos.x += dir.x;
+		pos.y += dir.y;
+}

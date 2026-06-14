@@ -4,6 +4,8 @@
 #include "map.h"
 #include "render.h"
 #include <cstring>
+#include "basicEnemy.h"
+#include "pathfinding.h"
 
 // TODO:
 //   mapManager :
@@ -14,7 +16,7 @@
 //      make it actually fucking find paths around collision (far future.)
 //
 //	 enemy :
-//	    make the enemy do enemy stuff idk man
+//	    make the enemy collide and shit
 
 
 enum SPR {
@@ -38,12 +40,15 @@ int main(int argc, char** argv) {
 	int playerWFrame = 0;
 	mapManager map;
 	renderer r;
+	enemy e;
+	pathfinding pathfinder;
 
 	std::vector<Rectangle> curMap = map.getMap(0);
 
 	while(!WindowShouldClose()) {
+		e.update(&p, &pathfinder);
 		p.update(curMap, 4,0);
-		r.drawScreen(0,&p,debugCollision);
+		r.drawScreen(0,&p,debugCollision,&e);
 	}
 	return 0;
 }

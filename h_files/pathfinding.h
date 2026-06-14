@@ -9,10 +9,10 @@ class enemy;
 
 class pathfinding {
 private:
-	Vector2 dirToPlayer(const player* p, const enemy* e);
+	Vector2 dirToPlayer(const player* p, const enemy* e) const;
 
 public:
-	void findPath(const player*, const enemy*);
+	Vector2 findPath(const player*, const enemy*) const;
 	
 };
 

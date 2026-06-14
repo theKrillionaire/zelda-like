@@ -7,7 +7,7 @@
 
 class enemy {
 private:
-	Vector2 pos = {20,20};
+	Vector2 pos = {200,200};
 
 public:
 	Vector2 setPos(Vector2 pos);
