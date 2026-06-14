@@ -2,6 +2,8 @@
 #include "player.h"
 #include <math.h>
 #include "map.h"
+#include "render.h"
+#include <cstring>
 
 enum SPR {
 	MAP_TEST,
@@ -10,33 +12,24 @@ enum SPR {
 
 class player;
 
-int main() {
+int main(int argc, char** argv) {
+	bool debugCollision = false;
+	if (argc > 1) {
+		if(!strcmp(argv[1], "-dc") || !strcmp(argv[1], "--debugCollisions")) {
+			debugCollision = true;
+		}
+
+	}
 	InitWindow(340,240, "gay");
 	SetTargetFPS(30);
 	player p;
-	Vector2 playerPos = { 0, 0 };
-	Vector2 playerDir = { 0, 0 };
 	int playerWFrame = 0;
-	Camera2D camera = { 0 };
-	camera.offset = { 340 / 2, 240 / 2 };
-	camera.zoom = 1.0f;
-	Texture2D images[SPRCOUNT] = {
-		LoadTexture("mapimg/test.png")
-	};
 	mapController map;
+	renderer r;
 
 	while(!WindowShouldClose()) {
 		p.update(map.getMap(0), 4,0);
-		camera.target = {floor(playerPos.x + 20), floor(playerPos.y + 16)};
-		playerPos = p.getPos();
-		//playerDir = p.getDir();
-		BeginDrawing();
-			BeginMode2D(camera);
-				ClearBackground(BLACK);
-				DrawTexture(images[MAP_TEST],0,0,WHITE);
-				DrawTexture(p.getFrame(), playerPos.x, playerPos.y, WHITE);
-			EndMode2D();
-		EndDrawing();
+		r.drawScreen(0,&p,debugCollision);
 	}
 	return 0;
 }

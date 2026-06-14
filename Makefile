@@ -12,3 +12,4 @@ static: *.cpp
 	
 run: build/prog
 	./build/prog
+	rm -rf build/prog

@@ -35,7 +35,7 @@ void player::update(std::vector<Rectangle> walls, int wallcount, int curmap) {
 		pos.y += dir.y * speed;
 	}
 }
-Texture2D player::getFrame() {
+Texture2D player::getFrame() const {
 	if(walkFrame == 0) return images[SPR_DOWN1];
 	else if(walkFrame < 6) return images[SPR_DOWN2];
 	else if(walkFrame < 11) return images[SPR_DOWN1];
@@ -43,5 +43,5 @@ Texture2D player::getFrame() {
 	else if(walkFrame < 21) return images[SPR_DOWN1];
 }
 
-Vector2 player::getPos() { return pos; }
-int player::getWFrame() { return walkFrame; }
+Vector2 player::getPos() const { return pos; }
+int player::getWFrame() const { return walkFrame; }

@@ -15,7 +15,6 @@ class player {
 	private:
 		const float WALKSPEED = 2.5;
 		const float RUNSPEED = 5.0;
-		const Vector2 playerSize = { 20, 24 };
 		Texture2D images[SPRCNT] = {
 			LoadTexture("sprites/D3Down1.png"),
 			LoadTexture("sprites/D3Down2.png"),
@@ -26,11 +25,12 @@ class player {
 		float speed = WALKSPEED;
 		int walkFrame = 0;
 	public: 
-		Texture2D getCurSprite();
+		const Vector2 playerSize = { 22, 30 };
+		Texture2D getCurSprite() const;
 		void update(std::vector<Rectangle> walls, int wallcount, int curmap);
-		Vector2 getPos();
-		int getWFrame();
-		Texture2D getFrame();
+		Vector2 getPos() const;
+		int getWFrame() const;
+		Texture2D getFrame() const;
 };
 
 #endif
