@@ -6,7 +6,7 @@
 #include <cstring>
 
 // TODO:
-// 	 make renderer->std::vector maps pull from json files or something. for moddability
+// 	 make renderer->std::vector maps pull from json files or something. for modularity
 //   make mapController control the renderers' map image from the json
 
 
