@@ -12,6 +12,9 @@
 //
 //   pathfinding :
 //      make it actually fucking find paths around collision (far future.)
+//
+//	 enemy :
+//	    make the enemy do enemy stuff idk man
 
 
 enum SPR {

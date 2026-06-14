@@ -3,13 +3,16 @@
 
 #include <raylib.h>
 #include "player.h"
+//#include "basicEnemy.h"
+
+class enemy;
 
 class pathfinding {
 private:
-	Vector2 getVectorDir();
+	Vector2 dirToPlayer(const player* p, const enemy* e);
 
 public:
-	void findPath(const player* p);
+	void findPath(const player*, const enemy*);
 	
 };
 
