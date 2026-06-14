@@ -5,9 +5,9 @@
 #include <vector>
 #include <stdio.h>
 
-class mapController {
+class mapManager {
 public:
-	const static std::vector<Rectangle> getMap(int map);
+	std::vector<Rectangle> getMap(int map);
 
 };
 

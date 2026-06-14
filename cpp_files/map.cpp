@@ -2,7 +2,7 @@
 #include <raylib.h>
 #include <stdio.h>
 
-std::vector<Rectangle> mapController::getMap(int map) {
+std::vector<Rectangle> mapManager::getMap(int map) {
 	const static std::vector<std::vector<Rectangle>> maps = {
 		{
 		{0,0,32,640},

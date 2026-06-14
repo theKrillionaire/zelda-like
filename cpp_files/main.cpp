@@ -6,8 +6,12 @@
 #include <cstring>
 
 // TODO:
-// 	 make renderer->std::vector maps pull from json files or something. for modularity
-//   make mapController control the renderers' map image from the json
+//   mapManager :
+// 	    make renderer->std::vector maps pull from json files or something. for modularity
+//      make mapController control the renderers' map image from the json
+//
+//   pathfinding :
+//      make it actually fucking find paths around collision (far future.)
 
 
 enum SPR {
@@ -29,7 +33,7 @@ int main(int argc, char** argv) {
 	SetTargetFPS(30);
 	player p;
 	int playerWFrame = 0;
-	mapController map;
+	mapManager map;
 	renderer r;
 
 	std::vector<Rectangle> curMap = map.getMap(0);
