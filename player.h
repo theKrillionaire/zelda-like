@@ -2,6 +2,7 @@
 #define PLAYER_H
 
 #include <raylib.h>
+#include <vector>
 
 enum DANTE_SPR {
 	SPR_DOWN1,
@@ -26,7 +27,7 @@ class player {
 		int walkFrame = 0;
 	public: 
 		Texture2D getCurSprite();
-		void update(Rectangle* walls, int wallcount);
+		void update(std::vector<Rectangle> walls, int wallcount, int curmap);
 		Vector2 getPos();
 		int getWFrame();
 		Texture2D getFrame();

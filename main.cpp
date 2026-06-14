@@ -1,6 +1,7 @@
 #include <raylib.h>
 #include "player.h"
 #include <math.h>
+#include "map.h"
 
 enum SPR {
 	MAP_TEST,
@@ -19,17 +20,13 @@ int main() {
 	Camera2D camera = { 0 };
 	camera.offset = { 340 / 2, 240 / 2 };
 	camera.zoom = 1.0f;
-	Rectangle walls[4] = {
-		{0,0,32,640},
-		{640,0,32,640},
-		{0,0,640,32},
-		{0,610,640,32},
-	};
 	Texture2D images[SPRCOUNT] = {
 		LoadTexture("mapimg/test.png")
 	};
+	mapController map;
+
 	while(!WindowShouldClose()) {
-		p.update(walls, 4);
+		p.update(map.getMap(0), 4,0);
 		camera.target = {floor(playerPos.x + 20), floor(playerPos.y + 16)};
 		playerPos = p.getPos();
 		//playerDir = p.getDir();

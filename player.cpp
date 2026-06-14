@@ -2,7 +2,7 @@
 #include "player.h"
 #include <stdio.h>
 
-void player::update(Rectangle* walls, int wallcount) {
+void player::update(std::vector<Rectangle> walls, int wallcount, int curmap) {
 	bool touchingWallX = 0;
 	bool touchingWallY = 0;
 	Vector2 dir = {0, 0};

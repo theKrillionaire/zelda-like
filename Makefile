@@ -1,6 +1,6 @@
 build/prog: *.cpp
 	mkdir -p build
-	g++ *.cpp -o build/prog -lraylib -lm
+	g++ *.cpp -o build/prog -lraylib -lX11 -lXrandr -lXinerama -lXcursor -lXi -lXext -lGL -lm -lpthread -ldl -lrt
 	
 with assets: build/prog
 	mkdir -p build/sprites
