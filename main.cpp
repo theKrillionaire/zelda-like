@@ -27,8 +27,10 @@ int main(int argc, char** argv) {
 	mapController map;
 	renderer r;
 
+	std::vector<Rectangle> curMap = map.getMap(0);
+
 	while(!WindowShouldClose()) {
-		p.update(map.getMap(0), 4,0);
+		p.update(curMap, 4,0);
 		r.drawScreen(0,&p,debugCollision);
 	}
 	return 0;
