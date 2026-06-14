@@ -3,7 +3,7 @@
 #include <stdio.h>
 
 std::vector<Rectangle> mapController::getMap(int map) {
-	std::vector<std::vector<Rectangle>> maps = {
+	const static std::vector<std::vector<Rectangle>> maps = {
 		{
 		{0,0,32,640},
 		{640,0,32,640},

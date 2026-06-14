@@ -5,6 +5,11 @@
 #include "render.h"
 #include <cstring>
 
+// TODO:
+// 	 make renderer->std::vector maps pull from json files or something. for moddability
+//   make mapController control the renderers' map image from the json
+
+
 enum SPR {
 	MAP_TEST,
 	SPRCOUNT

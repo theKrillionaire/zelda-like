@@ -7,7 +7,7 @@
 
 class mapController {
 public:
-	std::vector<Rectangle> getMap(int map);
+	const static std::vector<Rectangle> getMap(int map);
 
 };
 
