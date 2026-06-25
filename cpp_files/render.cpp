@@ -24,12 +24,12 @@ void renderer::drawScreen(int curMap, const player* p, bool debugCollision, cons
 			ClearBackground(BLACK);
 			DrawTexture(images[MAP_TEST],0,0,WHITE);
 			DrawTexture(p->getFrame(), playerPos.x - 4, playerPos.y, WHITE);
-			// DrawTexture(images[SLIME], enemyPos.x - 4, enemyPos.y, WHITE);
-			DrawRectangleLines(regionRect.x,regionRect.y,regionRect.width - 1,regionRect.height - 1 , WHITE);
+			DrawTexture(images[SLIME], enemyPos.x - 4, enemyPos.y, WHITE);
 
 			if(debugCollision) {
 				DrawRectangleLines(playerPos.x,playerPos.y,playerSize.x,playerSize.y, WHITE);
 				DrawRectangleLines(enemyPos.x,enemyPos.y,32,32, WHITE);
+				DrawRectangleLines(regionRect.x,regionRect.y,regionRect.width - 1,regionRect.height - 1 , WHITE);
 			}
 		EndMode2D();
 	EndDrawing();
