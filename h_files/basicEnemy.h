@@ -7,7 +7,10 @@
 
 class enemy {
 private:
-	Vector2 pos = {200,200};
+	Vector2 pos = {200.0f,200.0f};
+	int timerMove = 30;
+	int timerMoving = 10;
+	bool flipped = false;
 
 public:
 	Vector2 setPos(Vector2 pos);
