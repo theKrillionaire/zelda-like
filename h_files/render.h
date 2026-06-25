@@ -16,11 +16,15 @@ private:
 	Vector2 playerPos = { 0, 0 };
 	Vector2 playerDir = { 0, 0 };
 	Vector2 enemyPos = { 0, 0 };
+	Vector2 playerSize = { 0, 0 };
 	Texture2D images[SPRCOUNT] = {
 		LoadTexture("mapimg/test.png"),
 		LoadTexture("sprites/fucking_slime.png")
 	};
 	Camera2D camera;
+	Rectangle playerCollider = { 0, 0, 0, 0 };
+	Vector2 region = { 0, 0 };
+	Rectangle regionRect = { region.x * 340, region.y * 240, 340, 240 };
 
 public:
 	void drawScreen(int curMap, const player* p, bool debugCollision, const enemy* e);
