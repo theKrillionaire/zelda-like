@@ -6,6 +6,7 @@
 #include <cstring>
 #include "basicEnemy.h"
 #include "pathfinding.h"
+#include <vector>
 
 // TODO:
 //   mapManager :
@@ -42,12 +43,15 @@ int main(int argc, char** argv) {
 	renderer r;
 	enemy e;
 	pathfinding pathfinder;
-
-	std::vector<Rectangle> curMap = map.getMap(0);
+	std::vector<Rectangle> curMap =  {
+		{ 0,0,0,0},
+		{ 1,1,1,1}
+	};
+	map.getMap("maps/map1.map");
 
 	while(!WindowShouldClose()) {
 		e.update(&p, &pathfinder);
-		p.update(curMap, 4,0);
+		p.update(curMap,0);
 		r.drawScreen(0,&p,debugCollision,&e);
 	}
 	return 0;

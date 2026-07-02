@@ -2,7 +2,7 @@
 #include "player.h"
 #include <stdio.h>
 
-void player::update(std::vector<Rectangle> walls, int wallcount, int curmap) {
+void player::update(std::vector<Rectangle> walls, int curmap) {
 	bool touchingWallX = 0;
 	bool touchingWallY = 0;
 	Vector2 dir = {0, 0};
@@ -24,7 +24,7 @@ void player::update(std::vector<Rectangle> walls, int wallcount, int curmap) {
 	
 	Rectangle checkColliderX = { pos.x + dir.x * speed,pos.y,playerSize.x,playerSize.y };
 	Rectangle checkColliderY = { pos.x,pos.y + dir.y * speed,playerSize.x,playerSize.y };
-	for(int i = 0; i < wallcount; i++) {
+	for(int i = 0; i < walls.size(); i++) {
 		if(CheckCollisionRecs(checkColliderX,walls[i])) touchingWallX = 1;
 		if(CheckCollisionRecs(checkColliderY,walls[i])) touchingWallY = 1;
 	}

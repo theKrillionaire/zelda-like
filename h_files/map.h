@@ -7,8 +7,7 @@
 
 class mapManager {
 public:
-	std::vector<Rectangle> getMap(int map);
-
+	std::vector<Rectangle> getMap(char path[256]);
 };
 
 #endif

@@ -7,7 +7,7 @@ with assets: build/prog
 	cp -r sounds build
 	cp -r sprites/*.png build/sprites
 	
-static: *.cpp
+static: build/prog
 	g++ *.cpp -o build/prog -L$$HOME/raylib -lraylib -lopengl32 -lgdi32 -lwinmm -lshell32 -luser32 -static-libg++
 	
 run: build/prog

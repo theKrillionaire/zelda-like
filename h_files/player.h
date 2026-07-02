@@ -27,7 +27,7 @@ class player {
 	public: 
 		const Vector2 playerSize = { 22, 30 };
 		Texture2D getCurSprite() const;
-		void update(std::vector<Rectangle> walls, int wallcount, int curmap);
+		void update(std::vector<Rectangle> walls, int curmap);
 		Vector2 getPos() const;
 		int getWFrame() const;
 		Texture2D getFrame() const;

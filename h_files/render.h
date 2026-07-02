@@ -24,7 +24,7 @@ private:
 	Camera2D camera;
 	Rectangle playerCollider = { 0, 0, 0, 0 };
 	Vector2 region = { 0, 0 };
-	Rectangle regionRect = { region.x * 340, region.y * 240, 340, 240 };
+	Rectangle regionRect = { region.x * 288, region.y * 256, 288, 256 };
 
 public:
 	void drawScreen(int curMap, const player* p, bool debugCollision, const enemy* e);

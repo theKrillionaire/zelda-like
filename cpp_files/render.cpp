@@ -14,11 +14,9 @@ void renderer::drawScreen(int curMap, const player* p, bool debugCollision, cons
 	camera.offset = { 340 / 2, 240 / 2 };
 	camera.zoom = 1.0f;
 	playerCollider = { playerSize.x, playerSize.y, playerPos.x, playerPos.y };
-	region = { floor(playerPos.x / 340), floor(playerPos.y / 240) };
+	region = { floor((playerPos.x + 16) / 340), floor((playerPos.y + 16) / 240) };
 	regionRect = { region.x * 340, region.y * 240, 340, 240 };
 	camera.target = { region.x * 340 + 170, region.y * 240 + 120 };
-
-
 	BeginDrawing();
 		BeginMode2D(camera);
 			ClearBackground(BLACK);
