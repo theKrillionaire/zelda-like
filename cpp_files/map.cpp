@@ -20,7 +20,6 @@ std::vector<Rectangle> mapManager::getMap(char path[256]) {
 		buffer = new char[length];
 		file.read(buffer,length);
 		file.close();
-		printf(buffer);
 	}
 	return map;
 		

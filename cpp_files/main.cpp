@@ -28,6 +28,7 @@ enum SPR {
 class player;
 
 int main(int argc, char** argv) {
+	bool loading = true;
 	bool debugCollision = false;
 	if (argc > 1) {
 		if(!strcmp(argv[1], "-dc") || !strcmp(argv[1], "--debugCollisions")) {
@@ -43,11 +44,7 @@ int main(int argc, char** argv) {
 	renderer r;
 	enemy e;
 	pathfinding pathfinder;
-	std::vector<Rectangle> curMap =  {
-		{ 0,0,0,0},
-		{ 1,1,1,1}
-	};
-	map.getMap("maps/map1.map");
+	std::vector<Rectangle> curMap = map.getMap("maps/map1.map");
 
 	while(!WindowShouldClose()) {
 		e.update(&p, &pathfinder);

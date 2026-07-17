@@ -8,14 +8,11 @@ void player::update(std::vector<Rectangle> walls, int curmap) {
 	Vector2 dir = {0, 0};
 	touchingWallX = 0;
 	touchingWallY = 0;
-	if(IsKeyDown(KEY_LEFT)) { dir.x = -1; } 
-	else if(IsKeyDown(KEY_RIGHT)) { dir.x = 1; }
-	else { dir.x = 0; }
-	if(IsKeyDown(KEY_UP)) { dir.y = -1; }
-	else if(IsKeyDown(KEY_DOWN)) { dir.y = 1; }
-	else { dir.y = 0; }
-	if(IsKeyDown(KEY_Z)) speed = RUNSPEED;
-	else speed = WALKSPEED;
+
+	dir.x = IsKeyDown(KEY_RIGHT) - IsKeyDown(KEY_LEFT);
+	dir.y = IsKeyDown(KEY_DOWN) - IsKeyDown(KEY_UP);
+	
+	(IsKeyDown(KEY_Z)) ? speed = RUNSPEED : speed = WALKSPEED;
 	
 	if(dir.x || dir.y) {
 		if(walkFrame < 20) { walkFrame++; } 
